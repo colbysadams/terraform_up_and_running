@@ -9,7 +9,7 @@ terraform {
 }
 
 module "stage_db" {
-  source = "..\/..\/..\/..\/modules-repo\/data-stores/mysql"
+  source = "git@github.com:colbysadams/silver-guacamole.git//data-stores/mysql?ref=v0.0.1"
   db_name = "stagedb"
   db_password_secret_id = "stage/data-stores/mysql/admin"
 }

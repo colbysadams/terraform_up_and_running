@@ -10,7 +10,7 @@ terraform {
 }
 
 module "webserver_cluster" {
-  source = "..\/..\/..\/..\/modules-repo\/services/webserver-cluster"
+  source = "git@github.com:colbysadams/silver-guacamole.git//services/webserver-cluster?ref=v0.0.1"
   cluster_name = "webservers-prod"
   db_remote_state_bucket = "colbysadams-terraform-up-and-running-state"
   db_remote_state_key = "prod/data-stores/mysql/terraform.tfstate"
