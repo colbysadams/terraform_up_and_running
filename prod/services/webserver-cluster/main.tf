@@ -10,13 +10,17 @@ terraform {
 }
 
 module "webserver_cluster" {
-  source = "git@github.com:colbysadams/silver-guacamole.git//services/webserver-cluster?ref=v0.0.1"
+  source = "../../../../modules-repo/services/webserver-cluster"
   cluster_name = "webservers-prod"
   db_remote_state_bucket = "colbysadams-terraform-up-and-running-state"
   db_remote_state_key = "prod/data-stores/mysql/terraform.tfstate"
   instance_type = "t2.micro"
   max_size = 10
   min_size = 2
+  custom_tags = {
+    Owner = "team-foo"
+    DeployedBy = "terraform"
+  }
 }
 
 resource "aws_autoscaling_schedule" "scale_out_during_business_hours" {
